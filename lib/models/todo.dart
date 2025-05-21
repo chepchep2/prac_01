@@ -1,7 +1,7 @@
 class Todo {
   final int id;
-  final String title;
-  final String description; // title로만 할 경우 필요 없음
+  String title;
+  String description; // title로만 할 경우 필요 없음
   bool isCompleted;
 
   Todo({
