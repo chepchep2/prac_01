@@ -52,15 +52,32 @@ class _TodoListState extends State<TodoList> {
                   itemCount: _viewModel.todos.length,
                   itemBuilder: (context, index) {
                     final todo = _viewModel.todos[index];
-                    return ListTile(
-                      title: Text(todo.title),
-                      subtitle: Text(todo.description),
-                      trailing: Checkbox(
-                        value: todo.isCompleted,
-                        onChanged: (value) {
-                          _viewModel.toggleTodo(todo.id);
-                          setState(() {});
-                        },
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: Row(
+                        children: [
+                          Checkbox(
+                            value: todo.isCompleted,
+                            onChanged: (value) {
+                              _viewModel.toggleTodo(todo.id);
+                              setState(() {});
+                            },
+                          ),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  todo.title,
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
                     );
                   },
